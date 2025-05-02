@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 
 public class Main {
-
+    static Player hero;
     public static void main(String[] args) {
         int i = 0;
         
@@ -23,7 +23,7 @@ public class Main {
         String gameOn = scanner.next();
 
         // Check guess
-        while (gameOn.equalsIgnoreCase("yes")) {
+        while (gameOn.equalsIgnoreCase("yes") || gameOn.equalsIgnoreCase("yea") || gameOn.equalsIgnoreCase("yeah")) {
             if (i == 0){
                 hero(scanner);
                 i++;
@@ -34,30 +34,55 @@ public class Main {
             gameOn = scanner.next();
         } 
 
+
+
+        hero.askHp();
         System.out.println("I guess you have something better to do.");
-        
+
         // Close the scanner
-        scanner.close();     
+        scanner.close();   
+        
     }
+
+
 
 
     //making a hero
     public static void hero(Scanner scanner){
+        String weapon;
+
         System.out.println("What's your name hero?");
         String playerName = scanner.next();
-        Player hero = new Player(playerName, 20, 10);
+        int randomNumberForWeapon = (int) (Math.random() * 6) + 1;
+        if (randomNumberForWeapon == 1){
+            weapon = "dagger";
+        }
+        else if (randomNumberForWeapon == 2){
+            weapon = "Short Sword";
+        }
+        else if (randomNumberForWeapon == 3){
+            weapon = "Long Sword";
+        }
+        else if (randomNumberForWeapon == 4){
+            weapon = "Halberd";
+        }
+        else if (randomNumberForWeapon == 5){
+            weapon = "Axe";
+        }
+        else {
+            weapon = "Great Sword";
+        }
+        
+        hero = new Player(playerName, 20, 10, weapon);
 
         System.out.println("Hello " + hero.playerNameAsk() + ". Welcome to Monster Fight Club!");
+        System.out.println("You awaken with a " + weapon + ".");
+
     }
 
-
-
-    //this makes a monster! It eventually will make a random monster, hopefully there will be about 4 different ones
-    //For now it makes a skeleton as a placeholder so I can get all the moving parts of the first monster moving
-    //After that is should be easy to copy the "skeleton" of the monster class between ideas
+    //Generates a random Monster!
     public static void monster() {
         int randomNumberForMonster = (int) (Math.random() * 3) + 1;
-        int randomNumberForWeapon = (int) (Math.random() * 6) + 1;
         
             if (randomNumberForMonster == 1) {
                 Monster skeleton = new Monster( "Skeleton",  "Short Sword", true, 13, 14);
@@ -69,12 +94,12 @@ public class Main {
             }
 
             if (randomNumberForMonster == 2) {
-                Monster zombie = new Monster( "Zombie",  "Short Sword", true, 15, 8);
+                Monster zombie = new Monster( "Zombie",  "Bite", true, 15, 8);
                 System.out.println("Hey Imma " + zombie.askName() + ", gimme yer brains!");
                 zombie.askWeapon();
                 zombie.askHp();
                 zombie.askAc();
-                System.out.println("You take " + MyUtilities.twoDSixAttack() + " damage.");
+                System.out.println("You take " + MyUtilities.oneDEightAttack() + " damage.");
             }
 
             if (randomNumberForMonster == 3) {
@@ -83,7 +108,7 @@ public class Main {
                 rat.askWeapon();
                 rat.askHp();
                 rat.askAc();
-                System.out.println("You take " + MyUtilities.twoDSixAttack() + " damage.");
+                System.out.println("You take " + MyUtilities.oneDFourAttack() + " damage.");
             }
     }
 

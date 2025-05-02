@@ -4,3 +4,5 @@ Currently I am harvesting ideas to add elements to the game one by one.
 There will be a hero class, a weapon class, and a monster class at least.
 These contain the hit point totals of the player and monster, as well as the random damage of the weapons.
 Hitting a monster is based on their "AC" which is just the name for a number you must pass to "hit" and then they take "damage" based on the weapon.
+Next time I need to figure out how to continualy modify a value of a class object.
+Then, after I see the last few Zybooks, I will be prepared to add the final requirements (using the outline to come up with additional idea).

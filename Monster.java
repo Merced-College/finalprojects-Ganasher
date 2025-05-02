@@ -17,7 +17,7 @@ public class Monster {
 
 
     void askWeapon() {
-        System.out.println("I have a deadly " + weapon + ".");
+        System.out.println("It has a deadly " + weapon + ".");
 
     }
 
