@@ -1,0 +1,6 @@
+The game is currently going to be about fighting monsters.
+I was just going to do random inputs and outputs but it seems to be more fun to add a user element (curtain) in between the reality of just rolling random numbers and that makes room for classes and data tables.
+Currently I am harvesting ideas to add elements to the game one by one.
+There will be a hero class, a weapon class, and a monster class at least.
+These contain the hit point totals of the player and monster, as well as the random damage of the weapons.
+Hitting a monster is based on their "AC" which is just the name for a number you must pass to "hit" and then they take "damage" based on the weapon.
