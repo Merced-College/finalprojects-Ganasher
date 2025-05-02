@@ -8,4 +8,8 @@ public class Player {
         this.hp = hp;
         this.ac = ac;
     }
+
+    public String playerNameAsk(){
+        return name;
+    }
 }

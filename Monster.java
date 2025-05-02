@@ -17,17 +17,17 @@ public class Monster {
 
 
     void askWeapon() {
-        System.out.println("I have a " + weapon + ".");
+        System.out.println("I have a deadly " + weapon + ".");
 
     }
 
     void askHp() {
-        System.out.println("I have " + hp + " hp.");
+        System.out.println("The " + name + " has " + hp + " hp.");
 
     }
 
     void askAc() {
-        System.out.println("I have an ac of " + ac + ".");
+        System.out.println("The " + name + " has an ac of " + ac + ".");
 
     }
 
