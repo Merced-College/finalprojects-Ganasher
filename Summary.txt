@@ -14,3 +14,6 @@ Next up I could:
 1. Randomize weapon damage based on name.
 2. Have monster battle cries and deathrattles.
 3. Have monsters drop gold.
+
+Cleaned up the Code, most of the brackets where not lined up with their start code line.
+Added linked list for monster killed list at end of game.

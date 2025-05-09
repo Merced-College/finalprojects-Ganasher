@@ -9,13 +9,18 @@ import java.util.Scanner;
 
 public class Main {
     static Player hero;
+    static MonsterList defeatedMonsters = new MonsterList();
     public static void main(String[] args) {
-        int i = 0;
-        
-
-        
         // Create Scanner for user input
         Scanner scanner = new Scanner(System.in);
+        String playAgain;
+
+     do {
+        defeatedMonsters = new MonsterList(); // Reset monster log
+        int i = 0;
+        
+        
+        
 
         System.out.println("");
         System.out.println("Would you like to fight a monster?");
@@ -28,35 +33,36 @@ public class Main {
                 hero(scanner);
                 i++;
             }
-            
             //create a monster
             Monster currentMonster = monster();
-                    //introduce the monster to the player
+            //introduce the monster to the player
             System.out.println("A monster is let into the dungeon!");
             currentMonster.battleCry();
-                    
-
-                //fight the monster in the while loop
+                
+            //fight the monster in the while loop
             while (hero.getHp() > 0 && currentMonster.getHp() > 0) {
                 System.out.println("Your HP: " + hero.getHp() + " | Monster HP: " + currentMonster.getHp());
                 System.out.println("Press Enter to attack...");
+                System.out.println("");
                 scanner.nextLine();
 
                 int playerDamage = MyUtilities.oneDEightAttack(); // Choose dice based on weapon later
                 System.out.println("You strike with your " + hero.getWeapon() + " for " + playerDamage + " damage!");
                 currentMonster.takeDamage(playerDamage);
 
-            // Check if monster is defeated
+                // Check if monster is defeated
                 if (currentMonster.getHp() <= 0) {
                     int randomGold = (int) (Math.random() * 6);
                     hero.addGold(randomGold);
+                    // add monster to linked list
+                    defeatedMonsters.add(currentMonster.askName());
                     System.out.println("You have defeated the " + currentMonster.askName() + "!");
                     System.out.println("");
                     System.out.println("You gain " + randomGold + " gold!");
                     System.out.println("You have " + hero.getGold() + " gold!");
                     break;
                 }
-
+                // Let the monster attack
                 else if (currentMonster.getHp() > 0){
                      int monsterDamage = MyUtilities.oneDEightAttack(); // Choose dice based on weapon later
                      System.out.println("You are attacked for " + monsterDamage + " damage!");
@@ -64,7 +70,7 @@ public class Main {
                 }
 
 
-        }
+            }
 
             //check if player wishes to continue
             if (hero.getHp() > 0){
@@ -86,6 +92,21 @@ public class Main {
             }
         } 
 
+        // call linked list for list of defeated monsters
+        System.out.println("You defeated: ");
+        if (!defeatedMonsters.isEmpty()) {
+            defeatedMonsters.printDefeatedMonsters();
+        }
+
+        System.out.println("Would you like to play again?");
+        playAgain = scanner.next();
+        scanner.nextLine();
+        System.out.println();
+
+     } while (playAgain.equalsIgnoreCase("yes") || playAgain.equalsIgnoreCase("y"));
+
+     System.out.println("Thanks for playing!");
+    
         // Close the scanner
         scanner.close();       
     }
