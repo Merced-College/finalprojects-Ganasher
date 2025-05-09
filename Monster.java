@@ -42,24 +42,32 @@ public class Monster {
 
     void battleCry(){
         if (name.equalsIgnoreCase("Skeleton")) {
-            System.out.println("Hey Imma " + skeleton.askName() + ", gimme yer bones!");
+            System.out.println("Hey Imma Skeleton, gimme yer bones!");
         }
         if (name.equalsIgnoreCase("Zombie")) {
-            System.out.println("Hey Imma " + zombie.askName() + ", gimme yer brains!");
+            System.out.println("Hey Imma Zombie gimme yer brains!");
 
         }
         if (name.equalsIgnoreCase("Rat")) {
-            System.out.println("The " + rat.askName() + " hisses.");
+            System.out.println("The Rat hisses.");
+        }
+        if (name.equalsIgnoreCase("Dragon")) {
+            System.out.println("The Dragon roars. You are screwed.");
         }
 
     }
 
     public void takeDamage(int damage) {
-        hp -= damage;
-        if (hp < 0) {
-            hp = 0;
+        if (damage > ac){
+            hp -= (damage - ac);
+            if (hp < 0) {
+                hp = 0;
+            }
+        System.out.println(name + " takes " + (damage - ac) + " damage and now has " + hp + " hp.");
         }
-    System.out.println(name + " takes " + damage + " damage and now has " + hp + " hp.");
+        else if (damage <= ac){
+        System.out.println("Your attack misses!");
+        }
     }
 
 

@@ -17,20 +17,26 @@ public class Main {
         // Create Scanner for user input
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("");
         System.out.println("Would you like to fight a monster?");
 
         String gameOn = scanner.next();
+        scanner.nextLine();
 
         while (gameOn.equalsIgnoreCase("yes") || gameOn.equalsIgnoreCase("yea") || gameOn.equalsIgnoreCase("yeah")) {
             if (i == 0){
                 hero(scanner);
                 i++;
             }
-
-                //create a monster
+            
+            //create a monster
             Monster currentMonster = monster();
+                    //introduce the monster to the player
+            System.out.println("A monster is let into the dungeon!");
+            currentMonster.battleCry();
+                    
 
-        //fight the monster in the while loop
+                //fight the monster in the while loop
             while (hero.getHp() > 0 && currentMonster.getHp() > 0) {
                 System.out.println("Your HP: " + hero.getHp() + " | Monster HP: " + currentMonster.getHp());
                 System.out.println("Press Enter to attack...");
@@ -42,7 +48,12 @@ public class Main {
 
             // Check if monster is defeated
                 if (currentMonster.getHp() <= 0) {
+                    int randomGold = (int) (Math.random() * 6);
+                    hero.addGold(randomGold);
                     System.out.println("You have defeated the " + currentMonster.askName() + "!");
+                    System.out.println("");
+                    System.out.println("You gain " + randomGold + " gold!");
+                    System.out.println("You have " + hero.getGold() + " gold!");
                     break;
                 }
 
@@ -59,6 +70,8 @@ public class Main {
             if (hero.getHp() > 0){
                 System.out.println("Would you like to fight another monster?");
                 gameOn = scanner.next();
+                scanner.nextLine();
+                System.out.println("");
 
                 //quit game
                 if (!(gameOn.equalsIgnoreCase("yes") || gameOn.equalsIgnoreCase("yea") || gameOn.equalsIgnoreCase("yeah"))){
@@ -73,18 +86,11 @@ public class Main {
             }
         } 
 
-
-
-        
-
         // Close the scanner
-        scanner.close();   
-        
+        scanner.close();       
     }
 
-
-
-
+    
          //making a hero, data structure array
     public static void hero(Scanner scanner){
         String[] weapons = {
@@ -101,11 +107,14 @@ public class Main {
 
         System.out.println("What's your name hero?");
         String playerName = scanner.next();
+        scanner.nextLine();
         
-        hero = new Player(playerName, 20, 10, weapon);
+        hero = new Player(playerName, 20, 3, weapon, 0);
 
         System.out.println("Hello " + hero.playerNameAsk() + ". Welcome to Monster Fight Club!");
         System.out.println("You awaken with a " + weapon + ".");
+        System.out.println("Your armor is level 3.");
+        System.out.println("");
 
     }
 
@@ -114,9 +123,10 @@ public class Main {
       //Generates a random Monster!
     public static Monster monster() {
         Monster[] monsters = {
-        new Monster("Skeleton", "Short Sword", true, 13, 14),
-        new Monster("Zombie", "Bite", true, 15, 8),
-        new Monster("Rat", "Bite", true, 1, 10)
+        new Monster("Skeleton", "Short Sword", true, 13, 2),
+        new Monster("Zombie", "Bite", true, 15, 0),
+        new Monster("Rat", "Bite", true, 1, 1),
+        new Monster("Dragon", "Bite", true, 100, 10)
     };
 
     int randomIndex = (int) (Math.random() * monsters.length);

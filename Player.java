@@ -3,12 +3,14 @@ public class Player {
     int hp;
     int ac;
     String weapon;
+    int gold;
 
-    public Player(String name, int hp, int ac, String weapon) {
+    public Player(String name, int hp, int ac, String weapon, int gold) {
         this.name = name;
         this.hp = hp;
         this.ac = ac;
         this.weapon = weapon;
+        this.gold = gold;
     }
 
     public String playerNameAsk(){
@@ -29,10 +31,23 @@ public class Player {
     }
 
     public void takeDamage(int damage) {
-        hp -= damage;
-        if (hp < 0) {
-            hp = 0;
+        if (damage > ac){
+            hp -= (damage - ac);
+            if (hp < 0) {
+                hp = 0;
+            }
+        System.out.println(name + " takes " + (damage - ac) + " damage and now has " + hp + " hp.");
         }
-    System.out.println(name + " takes " + damage + " damage and now has " + hp + " hp.");
+        else if (damage <= ac){
+        System.out.println("Your armor protects you!");
+        }
+    }
+
+    public void addGold(int newGold){
+        gold += newGold; 
+    }
+
+    public int getGold (){
+        return gold;
     }
 }
