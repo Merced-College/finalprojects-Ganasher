@@ -19,4 +19,20 @@ public class Player {
         System.out.println(name + " has " + hp + " hp.");
 
     }
+
+    public int getHp(){
+        return hp;
+    }
+
+    public String getWeapon(){
+        return weapon;
+    }
+
+    public void takeDamage(int damage) {
+        hp -= damage;
+        if (hp < 0) {
+            hp = 0;
+        }
+    System.out.println(name + " takes " + damage + " damage and now has " + hp + " hp.");
+    }
 }
