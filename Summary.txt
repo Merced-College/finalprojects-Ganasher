@@ -17,3 +17,5 @@ Next up I could:
 
 Cleaned up the Code, most of the brackets where not lined up with their start code line.
 Added linked list for monster killed list at end of game.
+
+Task 1. 2. and 3. are done. Having too much fun with this! Maybe I should focus on my other classes now lol.

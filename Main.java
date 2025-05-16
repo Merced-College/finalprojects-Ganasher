@@ -46,7 +46,7 @@ public class Main {
                 System.out.println("");
                 scanner.nextLine();
 
-                int playerDamage = MyUtilities.oneDEightAttack(); // Choose dice based on weapon later
+                int playerDamage = hero.attackDamage(); // Choose dice based on weapon
                 System.out.println("You strike with your " + hero.getWeapon() + " for " + playerDamage + " damage!");
                 currentMonster.takeDamage(playerDamage);
 
@@ -56,6 +56,7 @@ public class Main {
                     hero.addGold(randomGold);
                     // add monster to linked list
                     defeatedMonsters.add(currentMonster.askName());
+                    currentMonster.deathRattle();
                     System.out.println("You have defeated the " + currentMonster.askName() + "!");
                     System.out.println("");
                     System.out.println("You gain " + randomGold + " gold!");

@@ -46,13 +46,28 @@ public class Monster {
         }
         if (name.equalsIgnoreCase("Zombie")) {
             System.out.println("Hey Imma Zombie gimme yer brains!");
-
         }
         if (name.equalsIgnoreCase("Rat")) {
             System.out.println("The Rat hisses.");
         }
         if (name.equalsIgnoreCase("Dragon")) {
             System.out.println("The Dragon roars. You are screwed.");
+        }
+
+    }
+
+    void deathRattle(){
+        if (name.equalsIgnoreCase("Skeleton")) {
+            System.out.println("My Bones!");
+        }
+        if (name.equalsIgnoreCase("Zombie")) {
+            System.out.println("SQUISH! CRUNCH!");
+        }
+        if (name.equalsIgnoreCase("Rat")) {
+            System.out.println("You have killed a rodent of Unusual Size!");
+        }
+        if (name.equalsIgnoreCase("Dragon")) {
+            System.out.println("The Dragon roars it's final roar! You are the Slayer!");
         }
 
     }
